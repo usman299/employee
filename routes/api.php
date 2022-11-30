@@ -27,4 +27,5 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('employee', 'API\UserController@employee');
     Route::get('employee/{id}', 'API\UserController@singleEmployee');
     Route::post('employee/search', 'API\UserController@employeeSearch');
+    Route::post('/logout', 'API\UserController@logout');
 });

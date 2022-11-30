@@ -179,5 +179,12 @@ class UserController extends Controller
         $success = UserCollection::collection($data);
         return response()->json(['success' => $success], $this->successStatus);
     }
-
+    public function logout(){
+        if (Auth::check()) {
+            Auth::user()->token()->revoke();
+            return response()->json(['success' =>'logout_success'],$this->successStatus);
+        }else{
+            return response()->json(['error' =>'api.something_went_wrong'], 500);
+        }
+    }
 }
